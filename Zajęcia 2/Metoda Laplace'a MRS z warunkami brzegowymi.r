@@ -1,3 +1,4 @@
+#Ćw. 1 i Ćw. 2
 #Rozwiązać iteracyjnie równanie Laplace'a metodą MRS w siatce o wymiarach 100x100 przy następujących warunkach brzegowych:
 #krawędzie górna, lewa i prawa: temperatura 0 krawędź dolna: temperatura 1
 # - Wyniki dla każdej iteracji wypisać na ekranie
