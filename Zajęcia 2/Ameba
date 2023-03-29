@@ -1,3 +1,4 @@
+#Ćw. 3
 #Założyć, że na wszystkich granicach temperatura wynosi 0 ale w środku 
 #obszaru (nie na brzegach!) porusza się losowo (zmieniając położenie co 
 #iterację, rozkład jednostajny) punkt o stałej wartości 1.
