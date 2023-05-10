@@ -1,3 +1,12 @@
+# Pole grawitacyjne - instrukcja i wskazówki 
+# 1) W siatce obliczeniowej o wymiarach 500 x 250; 
+#    odległości między węzłami 1m wymodelować wartość siły ciążenia na powierzchni modelu. Wartości te należy obliczyć dla wszystkich węzłów pomiędzy 100 a 400 metrem modelu. 
+#    Obliczenia wykonać przy założeniu że model składa się z tła o gęstość 3500 kg/m3 oraz 3 losowo zlokalizowanych ciał rudnych o średnicy 100 metrów 
+#    i gęstości 5500 kg/m3.
+# 2)  W dowolny sposób wykonać próbę przyspieszenia kodu z wykorzystaniem obliczeń równoległych. 
+#     Zadanie jest zaliczone jeśli kod równoległy jest szybszy choćby o włos (możecie spodziewać się 2-3 krotnego przyspieszenia)
+
+
 #install.packages('doSNOW')
 #install.packages('foreach')
 
