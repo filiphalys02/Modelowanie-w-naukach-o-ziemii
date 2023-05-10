@@ -1,3 +1,12 @@
+# Modelowanie sejsmicznego pola falowego
+# W siatce o wymiarach 500x500 węzłów odległych o 1 m wymodelować w rozchodzenie się fal akustycznych wokół źródła danego funkcją Rickera
+# a zlokalizowanego w połowie  długości modelu na głębokości 25 metrów. 
+# Ośrodek składa się z dwóch warstw: górnej o prędkości 1000 m/s i sięgającej do połowy modelu oraz dolej o prędkości 2000 m/s.
+# Wynikiem zadania mają być:
+# 1) Sejsmogram będący zapisem fal dochodzących do górnej krawędzi modelu w funkcji czasu i zapisywanego z krokiem 0.002 sekundy 
+# 2) Animacja przedstawiająca rozchodzenie się fal z krokiem 0.02
+
+
 library(animation)
 
 #parametry modelu
