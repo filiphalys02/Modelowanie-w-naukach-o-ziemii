@@ -1,3 +1,6 @@
+# Zbudowac mapy wartosci pola elektromagnetycznego w 4 wybranych wojewodztwach.
+
+
 #install.packages("sf")
 
 library(sf)
@@ -8,7 +11,7 @@ dzielnice <- st_read("dzielnice_Krakowa.shp")
 # transformacja do WGS
 dzielniceWGS <- st_transform(dzielnice,crs = 4326) 
 
-# nie chcemy podziału na dzielnice więc je wszystkie łączymy ze sobą 
+# nie chcemy podzialu na dzielnice więc je wszystkie laczymy ze sobą 
 krakowWGS <- st_union(st_geometry(dzielniceWGS))
 
 data <- read.csv("Wyniki_em_2019.csv",header=TRUE,encoding="UTF-8")
@@ -17,14 +20,14 @@ data <- read.csv("Wyniki_em_2019.csv",header=TRUE,encoding="UTF-8")
 #usunięcie "\" z końca stringa z szerokości geograficznej (ostatni znak)
 pom0 <- substr(data$Szerokość.geograficzna,1,nchar(data$Szerokość.geograficzna)-1)
 
-# podział na stopnie minuty sekundy 
+# podzial na stopnie, minuty, sekundy 
 pom1 <- strsplit(pom0, "°" )
 pom2 <- strsplit(unlist(pom1), "' " )
 
 # wszystko po kolei
 lats <- as.numeric(unlist(pom2))
 
-# pierwsze wartości stopnie, drugie minuty itp.
+# pierwsze wartosci stopnie, drugie minuty itp.
 d <- lats[seq(1, length(lats), 3)]
 m <- lats[seq(2, length(lats), 3)]
 s <- lats[seq(3, length(lats), 3)]
@@ -37,14 +40,14 @@ class(lat)
 # usunięcie "\" z końca stringa z szerokości geograficznej (ostatni znak)
 pom0 <- substr(data$Długość.geograficzna,1,nchar(data$Długość.geograficzna)-1)
 
-# podział na stopnie minuty sekundy 
+# podzial na stopnie minuty sekundy 
 pom1 <- strsplit(pom0, "°" )
 pom2 <- strsplit(unlist(pom1), "' " )
 
 # wszystko po kolei
 lons <- as.numeric(unlist(pom2))
 
-# pierwsze wartości stopnie, drugie minuty itp.
+# pierwsze wartosci stopnie, drugie minuty itp.
 d <- lons[seq(1, length(lats), 3)]
 m <- lons[seq(2, length(lats), 3)]
 s <- lons[seq(3, length(lats), 3)]
@@ -52,7 +55,7 @@ s <- lons[seq(3, length(lats), 3)]
 # do decimal
 lon <- d + (m/60) + (s/3600)
 
-# od razu wartości pola
+# od razu wartosci pola
 value <- as.numeric(data$Wynik.pomiaru..V.m.)
 
 # budujemy ramki danych dla Polski
@@ -65,7 +68,7 @@ dataP$value <- value
 library(sp)
 library(rgdal)
 
-# trzeba przejść ze sfery (lat lon) na płaską mapę w ukladzie utm (małopolska jest w 34N)
+# trzeba przejsc ze sfery (lat lon) na plaska mape w ukladzie utm (malopolska jest w 34N)
 krakowUTM <- st_transform(krakowWGS, CRS("+proj=utm +zone=34 +datum=WGS84"))
 
 # to samo z naszymi danymi o czujnikach
@@ -82,7 +85,7 @@ library(spatstat)
 # stworzenie obiektu ppp 2D
 dataP_ppp <- ppp(x = data_UTM$lon, y = data_UTM $ lat, window = as.owin(krakowUTM))
 
-# stworzenie ppp z marks, czyli z danymi w punktach (tu wartość pola)
+# stworzenie ppp z marks, czyli z danymi w punktach (tu wartosc pola)
 dataP_ppp_v <- ppp(x = data_UTM$lon, y = data_UTM$lat, marks = data_UTM$value, window = as.owin(krakowUTM))
 
 # MAPA
