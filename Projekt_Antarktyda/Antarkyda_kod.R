@@ -30,10 +30,10 @@ saveGIF({
 
   i <- 1
   
-  prog_bar <- txtProgressBar(min=0,max=800,style=3)
+  prog_bar <- txtProgressBar(min=0,max=liczba_wierszy,style=3)
   stepi <- 0
   id_daty <- 0
-  while ( i < 800) {
+  while ( i < liczba_wierszy) {
   
     granica_lodu <- data.frame(lon = katy, lat = dane_bezdat[i,])
     
